@@ -4,14 +4,22 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution(object):       
+class Solution(object):
     def preorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        # Recursion
+        # Iteration
+        res = []
+        stack = [root]
+        # Stack: LIFO
         # Preorder: root -> left -> right
-        if not root:
-            return []
-        return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
+        # right first in, last out
+        while stack:
+            node = stack.pop()
+            if node:
+                res.append(node.val)
+                stack.append(node.right)
+                stack.append(node.left)
+        return res
