@@ -1,0 +1,30 @@
+"""
+# Definition for a Node.
+class Node(object):
+    def __init__(self, val=0, left=None, right=None, next=None):
+        self.val = val
+        self.left = left
+        self.right = right
+        self.next = next
+"""
+# Time: O(N), Space: O(N) (Can be optimized)
+class Solution(object):
+    def connect(self, root):
+        """
+        :type root: Node
+        :rtype: Node
+        """
+        # BFS, Level order traversal
+        # Use deque to store nodes in each level
+        q = collections.deque()
+        q.append(root)
+        while q:
+            qlen = len(q)
+            for i in range(qlen):
+                node = q.popleft()
+                if node:
+                    q.append(node.left)
+                    q.append(node.right)
+                    if i != qlen - 1:
+                        node.next = q[0]
+        return root   
