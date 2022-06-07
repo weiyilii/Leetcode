@@ -10,7 +10,15 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
+        # Iterative
+        res, stack = [], [root]
         # Postorder Traversal: left -> right -> root
-        if not root:
-            return []
-        return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val]
+        # Reversed postorder traversal: root -> right -> left
+        # Same as modified preorder, from right to left
+        while stack:
+            node = stack.pop()
+            if node:
+                res.append(node.val)
+                stack.append(node.left)
+                stack.append(node.right)
+        return res[::-1]
