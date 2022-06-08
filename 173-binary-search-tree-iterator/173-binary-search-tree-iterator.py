@@ -10,15 +10,17 @@ class BSTIterator(object):
         """
         :type root: TreeNode
         """
-        self.root = root
         self.stack = []
-        self.traversal(self.root, self.stack)
-
+        self.push(root)
+    # split inorder traversal using stack
+    # everytime call next, pop and push left sub tree using dfs
     def next(self):
         """
         :rtype: int
         """
-        return self.stack.pop(0).val
+        node = self.stack.pop()
+        self.push(node.right)
+        return node.val
 
     def hasNext(self):
         """
@@ -28,12 +30,11 @@ class BSTIterator(object):
             return True
         return False
         
-    def traversal(self, root, stack):
-        if root:
-            self.traversal(root.left, stack)
-            stack.append(root)
-            self.traversal(root.right, stack)
-
+    def push(self, node):
+        while node:
+            self.stack.append(node)
+            node = node.left
+            
 # Your BSTIterator object will be instantiated and called as such:
 # obj = BSTIterator(root)
 # param_1 = obj.next()
