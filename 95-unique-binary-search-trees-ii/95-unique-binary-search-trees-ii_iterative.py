@@ -18,8 +18,12 @@ class Solution(object):
         
         all_trees = []
         for cur_root_val in range(start, end+1):
+            # for example start = 1, end = n, cur_root_val = m
+            # all_left stores all possible unique BST 1:m-1
+            # all_right stores all plossible unique BST m+1:n
             all_left = self.helper(start, cur_root_val-1)
             all_right = self.helper(cur_root_val+1, end)
+            # iterate throgh all_left and all_right, combine every pair with current root node
             for left_tree in all_left:
                 for right_tree in all_right:
                     cur_root = TreeNode(cur_root_val)
