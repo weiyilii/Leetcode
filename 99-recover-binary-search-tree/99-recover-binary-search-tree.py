@@ -10,22 +10,23 @@ class Solution(object):
         :type root: TreeNode
         :rtype: None Do not return anything, modify root in-place instead.
         """
-        nodes = []
-        self.helper(root, nodes)
-        i = 0
-        while nodes[i].val < nodes[i+1].val:
-            i += 1
-        first = nodes[i]
-        j = len(nodes) - 1
-        while nodes[j].val > nodes[j-1].val:
-            j -= 1
-        second = nodes[j]
-        first.val, second.val = second.val, first.val
-        return root
+        # 1st and 2nd keeps elements being swapped
+        self.first, self.second = None, None
+        # prev tracks current's previous node 
+        self.prev = TreeNode(float('-inf'))
         
-    def helper(self, node, res):
-        if node:
-            self.helper(node.left, res)
-            res.append(node)
-            self.helper(node.right, res)
-        return
+        def dfs(root):
+            if root:
+                dfs(root.left)
+                if root.val < self.prev.val:
+                    # first only need to be assigned for the first time
+                    if not self.first:
+                        self.first = self.prev
+                    # second may change due to mistake places
+                    self.second = root
+                # prev also moves forward
+                self.prev = root
+                dfs(root.right)
+            
+        dfs(root)
+        self.first.val, self.second.val = self.second.val, self.first.val
