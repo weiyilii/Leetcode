@@ -13,14 +13,13 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        if not root:
-            return None
-        if p == root or q == root:
-            return root
-        leftnode = self.lowestCommonAncestor(root.left, p, q)
-        rightnode = self.lowestCommonAncestor(root.right, p, q)
-        if leftnode and rightnode:
-            return root
-        if leftnode:
-            return leftnode
-        return rightnode
+        while root:
+            # if root less than p, q, lca must be within left sub tree
+            if root.val > p.val and root.val > q.val:
+                root = root.left
+            # if root greater than p, q, lca must be within right sub tree
+            elif root.val < p.val and root.val < q.val:
+                root = root.right
+            # if p and q are in each side (or equal to root), lca is current root
+            else:
+                return root
