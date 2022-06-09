@@ -12,13 +12,16 @@ class Solution(object):
         :rtype: int
         """
         stack = []
-        i = 0
+        i = 0 # count variable
         cur = root
+        # Inorder traversal using stack
         while cur or stack:
             while cur:
                 stack.append(cur)
                 cur = cur.left
             cur = stack.pop()
+            # elements will be poped out ascendingly
+            # when i reaches k, kth smallest element is being poped out
             i += 1
             if i == k:
                 return cur.val
