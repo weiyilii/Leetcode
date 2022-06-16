@@ -11,6 +11,8 @@ class Solution(object):
         n = len(endWord)
         wordset = set(wordList)
         layer = collections.defaultdict(list)
+        # layer: last word in each path is key;
+        # the list of all paths ending with that word is value
         layer[beginWord] = [[beginWord]]
         
         while layer:
@@ -23,7 +25,7 @@ class Solution(object):
                         new = word[:i] + c + word[i+1:]
                         if new in wordset:
                             new_layer[new] += [path + [new] for path in layer[word]] 
-                            
+            # keys of new_layer are words that have been met, remove them from wordset
             wordset -= set(new_layer.keys())           
             layer = new_layer
         return []
