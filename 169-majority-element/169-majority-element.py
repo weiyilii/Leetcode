@@ -12,5 +12,5 @@ class Solution(object):
             if count == 0:
                 candidate, count = nums[i], 1
             else:
-                count += 1 if candidate == nums[i] else -1
+                count += (1 if candidate == nums[i] else -1)
         return candidate
