@@ -23,7 +23,7 @@ class Solution(object):
         q.append((beginWord, 1))
         # a word might appear in new layer many times
         # Use visited to keep track of visited word
-        visited = collections.defaultdict(int)
+        visited = set()
         while q:
             qlen = len(q)
             for i in range(qlen):
@@ -35,6 +35,6 @@ class Solution(object):
                     for item in changemap[key]:
                         # Only when item is not visited, append it to visited and queue
                         if item not in visited:
-                            visited[item] = level + 1
+                            visited.add(item)
                             q.append((item, level + 1))
         return 0
