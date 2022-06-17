@@ -11,8 +11,4 @@ class Solution(object):
         count1 = collections.Counter(s)
         count2 = collections.Counter(t)
         
-        for key in count1:
-            if count1[key] != count2[key]:
-                return False
-        
-        return True
+        return count1 == count2
