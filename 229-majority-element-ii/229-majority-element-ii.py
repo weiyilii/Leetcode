@@ -6,8 +6,6 @@ class Solution(object):
         """
         candidate1, candidate2, count1, count2 = 0, 0, 0, 0
         for num in nums:
-            print(candidate1, count1)
-            print(candidate2, count2)
             if num == candidate1:
                 count1 += 1
             elif num == candidate2:
