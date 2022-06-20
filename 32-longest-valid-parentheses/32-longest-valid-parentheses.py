@@ -6,6 +6,8 @@ class Solution(object):
         """
         stack = [-1]
         res = 0
+        # keep the topmost element of the stack 
+        # be the index of element right before each valid parentheses
         for i in range(len(s)):
             p = s[i]
             if p == '(':
