@@ -3,7 +3,14 @@ class MyQueue(object):
     def __init__(self):
         self.stack1 = []
         self.stack2 = []
-
+        
+    # Use 2 stacks as "U", stack1 has elements that top is newest
+    # stack2 has elements that top is oldest
+    # everytime push to stack1
+    # if pop or peek, first check if stack2 is null
+    # if null, pop stack1 and append stack2
+    # after doing so, return stack2's top
+    
     def push(self, x):
         """
         :type x: int
