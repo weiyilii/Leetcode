@@ -4,7 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        res, last = 0, 0
+        stack = []
         number, op = 0, '+'
         for i in range(len(s)):
             char = s[i]
@@ -12,17 +12,13 @@ class Solution(object):
                 number = number*10 + int(char)
             if (not char.isdigit() and char != ' ') or i == len(s)-1:
                 if op == '+':
-                    res += last
-                    last = number
+                    stack.append(number)
                 elif op == '-':
-                    res += last
-                    last = -number
+                    stack.append(-number)
                 elif op == '*':
-                    last = last*number
+                    stack.append(stack.pop()*number)
                 elif op == '/':
-                    last = int(float(last)/number)
+                    stack.append(int(float(stack.pop())/number))
                 op = char
                 number = 0
-        res += last
-        
-        return res   
+        return sum(stack)
