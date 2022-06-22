@@ -5,20 +5,23 @@ class Solution(object):
         :rtype: int
         """
         stack = []
-        number, op = 0, '+'
+        res, cur_num, last_num, op = 0, 0, 0, '+'
         for i in range(len(s)):
             char = s[i]
             if char.isdigit():
-                number = number*10 + int(char)
+                cur_num = cur_num*10 + int(char)
             if (not char.isdigit() and char != ' ') or i == len(s)-1:
                 if op == '+':
-                    stack.append(number)
+                    res += last_num
+                    last_num = cur_num
                 elif op == '-':
-                    stack.append(-number)
+                    res += last_num
+                    last_num = -cur_num
                 elif op == '*':
-                    stack.append(stack.pop()*number)
+                    last_num = last_num*cur_num
                 elif op == '/':
-                    stack.append(int(float(stack.pop())/number))
+                    last_num = int(float(last_num)/cur_num)
                 op = char
-                number = 0
-        return sum(stack)
+                cur_num = 0
+        res += last_num
+        return res
