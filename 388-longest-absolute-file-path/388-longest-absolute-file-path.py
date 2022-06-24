@@ -4,17 +4,18 @@ class Solution(object):
         :type input: str
         :rtype: int
         """
-        s = input.split("\n")
-        dic = {}
+        stack = []
         longest = 0
+        s = input.split("\n")
         for path in s:
-            if "." not in path:
-                key = path.count("\t")
-                dic[key] = len(path.replace("\t",""))
+            plen = len(path.lstrip("\t"))
+            level = len(path)-plen
+            while stack and level < len(stack):
+                stack.pop()   
+            if not stack:
+                stack.append(plen)
             else:
-        # everytime see a file, parent key-value pairs have already been updated
-                key = path.count("\t")
-                path_len = sum([dic[j] for j in dic if j < key])
-                path_len += key + len(path.replace("\t",""))
-                longest = max(longest, path_len)
+                stack.append(plen + stack[-1])
+            if "." in path:
+                longest = max(longest, stack[-1]+len(stack)-1)
         return longest
