@@ -4,6 +4,8 @@ class Solution(object):
         :type input: str
         :rtype: int
         """
+        # Using stack, each element in stack = length of the path to this element
+        # kinda like DFS, track length for each level
         stack = []
         longest = 0
         s = input.split("\n")
