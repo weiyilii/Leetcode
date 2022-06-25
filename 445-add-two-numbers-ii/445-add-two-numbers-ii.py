@@ -10,32 +10,20 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        def reverseLinkedlist(head):
-            prev = None
-            cur = head
-            while cur:
-                next = cur.next
-                cur.next = prev
-                prev = cur
-                cur = next
-            head = prev
-            return head
-        
-        l1 = reverseLinkedlist(l1)
-        l2 = reverseLinkedlist(l2)
-        
-        carrier = 0
-        dummy = cur = ListNode()
-        
-        while l1 or l2 or carrier:
-            x = l1.val if l1 else 0
-            y = l2.val if l2 else 0
-            carrier, num = divmod(x+y+carrier, 10)
-            cur.next= ListNode(num)
-            cur = cur.next
-            l1 = l1.next if l1 else None
-            l2 = l2.next if l2 else None
+        s1, s2 = [], []
+        while l1:
+            s1.append(l1.val)
+            l1 = l1.next
+        while l2:
+            s2.append(l2.val)
+            l2 = l2.next
             
-        res = reverseLinkedlist(dummy.next)
-        return res
-        
+        carrier, dummy = 0, None
+        while s1 or s2 or carrier:
+            x = s1.pop() if s1 else 0
+            y = s2.pop() if s2 else 0
+            carrier, num = divmod(x+y+carrier, 10)
+            new = ListNode(num)
+            new.next = dummy
+            dummy = new
+        return dummy
