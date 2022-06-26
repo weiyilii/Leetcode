@@ -9,6 +9,10 @@ class Solution(object):
         :type lists: List[ListNode]
         :rtype: ListNode
         """
+        # res = None
+        # for list in lists:
+        #    res = merge(res, list)
+        # return res
         def merge2lists(l1, l2):
             dummy = cur = ListNode()
             while l1 and l2:
