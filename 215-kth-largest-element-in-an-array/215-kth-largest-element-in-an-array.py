@@ -5,6 +5,9 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        # Heap
+        # Default: min heap
+        # kth largest = [len(nums)-k+1]th smallest
         from heapq import *
         heapify(nums)
         l = len(nums)
