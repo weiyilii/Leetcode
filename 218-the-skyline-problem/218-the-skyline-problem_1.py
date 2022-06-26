@@ -8,7 +8,12 @@ class Solution:
             l, r, h = b[0], b[1], -1*b[2]
             start.append((l, h, 's'))
             end.append((r, h, 'e'))  
-       
+            
+        # for 2 lines (x1, y1, status1), (x2, y2, status2)
+        # x1 != x2: smaller x comes first
+        # x1 == x2:
+        # both are start, higher comes first; both are end, lower comes first; one start one end, start comes first
+      
         start = sorted(start, key=lambda tup: (tup[0], tup[1]))
         end = sorted(end, key=lambda tup: (tup[0], -tup[1]))
         
