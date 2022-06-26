@@ -9,7 +9,7 @@ class Solution(object):
         :type lists: List[ListNode]
         :rtype: ListNode
         """
-        # Heap
+        # Heap as Priority Queue
         from heapq import *
         h = []
         for l in lists:
