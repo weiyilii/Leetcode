@@ -5,6 +5,7 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        # Heap, similar to 373
         from heapq import heappush, heappop
         h = [(matrix[0][0], (0, 0))]
         visited = {(0, 0)}
