@@ -39,7 +39,6 @@ class WordDictionary(object):
                         return
                     else:
                         dfs(current, word[1:])
-                return
         
         self.res = False
         current = self.root
