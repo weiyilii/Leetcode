@@ -11,13 +11,14 @@ class Solution(object):
             
             if i < 0 or i >= m or j < 0 or j >= n or (i, j) in seen or board[i][j] != word[k]:
                 return False
-            
+            # Track if we have seen (i, j) in current route
             seen.add((i, j))
             
             res = (search(i-1, j, seen, k+1) or
                    search(i+1, j, seen, k+1) or
                    search(i, j-1, seen, k+1) or
-                   search(i, j+1, seen, k+1)) 
+                   search(i, j+1, seen, k+1))
+            # Important: remeber to delete (i, j) from seen because it can still be visited by other routes
             seen.remove((i, j))
             return res
                     
