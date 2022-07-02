@@ -1,5 +1,4 @@
 class TrieNode(object):
-    
     def __init__(self):
         self.children = collections.defaultdict(TrieNode)
         self.is_word = False
