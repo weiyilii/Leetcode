@@ -28,6 +28,7 @@ class Solution(object):
             
         words = sentence.split(" ")
         res = []
+        # Be careful: root dictionary has "rf", words has "r"
         for word in words:
             new = ""
             current = trie.root
