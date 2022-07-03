@@ -7,7 +7,6 @@ class Solution(object):
         """
         res = 1
         k -= 1
-
         while k > 0:
             count = 0
             interval = [res, res+1]
@@ -21,4 +20,3 @@ class Solution(object):
                 k -= 1
                 res *= 10
         return res
-                
