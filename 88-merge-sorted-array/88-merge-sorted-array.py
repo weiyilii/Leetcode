@@ -7,6 +7,15 @@ class Solution(object):
         :type n: int
         :rtype: None Do not return anything, modify nums1 in-place instead.
         """
-        for i in range(n):
-            nums1[m+i] = nums2[i]
-        nums1.sort()
+        # nums1 and nums2 have been sorted
+        # scan from both ends(max) 
+        # keep selecting largest value and put it to the end of nums1
+        while m > 0 and n > 0:
+            if nums1[m-1] > nums2[n-1]:
+                nums1[m+n-1] = nums1[m-1]
+                m -= 1
+            else:
+                nums1[m+n-1] = nums2[n-1]
+                n -= 1
+        if n > 0:
+            nums1[:n] = nums2[:n]
