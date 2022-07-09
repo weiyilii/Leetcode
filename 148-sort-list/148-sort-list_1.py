@@ -17,6 +17,9 @@ class Solution(object):
         return self.merge(left, right)
     
     def getMid(self, head):
+        """
+        find mid and then break the list into left half (head->mid.previous; mid->None)
+        """
         prev = ListNode(0, head)
         mid = head
         while head and head.next:
