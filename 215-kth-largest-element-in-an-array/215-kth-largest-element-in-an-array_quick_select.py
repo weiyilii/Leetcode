@@ -10,6 +10,12 @@ class Solution(object):
         def quickSelect(left, right):
             pivot = nums[right]
             p = left
+            # after the whole process,  p means elements from left to p are <= pivot
+            # iterate from left to right-1
+            # everytime meets an element <= pivot
+            # swap it with nums[p]
+            # summary: select elements from left to right-1 which are less than pivot
+            # put them in the front of nums
             for i in range(left, right):
                 if nums[i] <= pivot:
                     nums[i], nums[p] = nums[p], nums[i]
