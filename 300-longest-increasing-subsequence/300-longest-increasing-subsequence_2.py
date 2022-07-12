@@ -4,6 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # DP
+        # Front to end
         n = len(nums)
         lis = [1]*n
         for i in range(n):
