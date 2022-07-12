@@ -4,6 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # DP
+        # Time: O(N^2)
+        # Back (base case) to forth
         n = len(nums)
         lis = [1]*n
         for i in range(n-1, -1, -1):
