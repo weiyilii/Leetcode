@@ -4,6 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
+        # Bucket sort
         count = collections.Counter(s)
         freq = count.values()
         high, low = max(freq), min(freq)
