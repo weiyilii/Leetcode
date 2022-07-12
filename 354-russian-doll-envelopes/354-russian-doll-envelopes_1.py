@@ -4,6 +4,10 @@ class Solution(object):
         :type envelopes: List[List[int]]
         :rtype: int
         """
+        # Sort envolopes by width([0]) ascendingly first then by height([1]) descendingly.
+        # This is to take care of cases like [6, 7], [6, 4].
+        # Then find the LIS longest increasing subsequence of heights
+        
         envelopes.sort(key = lambda x: (x[0], -x[1]))
         n = len(envelopes)
         
