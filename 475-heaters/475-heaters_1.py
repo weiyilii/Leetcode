@@ -5,6 +5,10 @@ class Solution(object):
         :type heaters: List[int]
         :rtype: int
         """
+        # After sorting houses and heaters
+        # Use binary search to find the least distance for each house to a heater
+        # return the max value of those distances
+        
         m, n = len(houses), len(heaters)
         radius = [0]*m
         houses.sort()
