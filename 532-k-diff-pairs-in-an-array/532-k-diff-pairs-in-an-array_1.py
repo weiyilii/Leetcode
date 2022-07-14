@@ -5,6 +5,8 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        # Binary Search
+        
         nums.sort()
         n = len(nums)
         res = set()
