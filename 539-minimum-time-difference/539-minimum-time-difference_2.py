@@ -4,6 +4,9 @@ class Solution(object):
         :type timePoints: List[str]
         :rtype: int
         """
+        # In Python, the remainder will be the same sign as the denominator (the divisor)
+        # -3 % 2 = (-2*2 + 1) % 2 = 1
+        
         def toMin(t):
             t = map(int, t.split(":"))
             return t[0]*60 + t[1]
