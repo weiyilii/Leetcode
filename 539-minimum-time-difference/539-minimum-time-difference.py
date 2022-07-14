@@ -13,8 +13,7 @@ class Solution(object):
         
         timePoints.sort()
         res = 24*60
-        for i in range(1, len(timePoints)-1):
-            res = min(res, timeDiff(timePoints[i-1], timePoints[i]),
-                      timeDiff(timePoints[i], timePoints[i+1]))
+        for i in range(0, len(timePoints)-1):
+            res = min(res, timeDiff(timePoints[i], timePoints[i+1]))
         res = min(res, timeDiff(timePoints[0], timePoints[len(timePoints)-1]))
         return res
