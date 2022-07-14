@@ -4,6 +4,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Time: O(N), Space: O(1)
+        # From left to right, record max_seen, if current num < max_seen, update right
+        # From right to left, record min_seen, if current num > min_seen, update left
+        
         n = len(nums)
         left, right = n, 0
         
