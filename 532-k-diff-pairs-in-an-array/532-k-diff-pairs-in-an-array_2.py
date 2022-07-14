@@ -5,6 +5,8 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        # Hashmap
+        
         count = collections.Counter(nums)
         res = 0
         for key in count:
