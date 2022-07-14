@@ -5,19 +5,9 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        nums.sort()
-        n = len(nums)
-        res = set()
-        
-        for i in range(n-1):
-            target = nums[i] + k
-            left, right = i+1, n-1
-            while left < right:
-                mid = left + (right - left) // 2
-                if nums[mid] < target:
-                    left = mid + 1
-                else:
-                    right = mid
-            if nums[left] == target:
-                res.add((nums[i], nums[left]))
-        return len(res)
+        count = collections.Counter(nums)
+        res = 0
+        for key in count:
+            if (k > 0 and key + k in count) or (k == 0 and count[key] > 1):
+                res += 1
+        return res
