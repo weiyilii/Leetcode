@@ -4,6 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Stack, Time: O(N), Space: O(N)
+        
         stack = []
         n = len(nums)
         left, right = n, 0
