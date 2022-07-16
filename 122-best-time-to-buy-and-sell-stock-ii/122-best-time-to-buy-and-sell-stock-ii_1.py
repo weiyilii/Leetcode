@@ -4,6 +4,8 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        # find all increasing sub lists
+        
         res = 0
         i, buy = 0, 0
         n = len(prices)
