@@ -9,6 +9,11 @@ class Solution(object):
         dp = [[False for j in range(n+1)] for i in range(m+1)]
         dp[0][0] = True
         
+        # Base case
+        # i = 0: string is '', compare with pattern
+        #        once a non '*' element occurs at j, dp[0][j:] would be false
+        # j = 0: pattern is '', compare with string
+        #        string will not be empty, all dp[i][0] except dp[0][0] will be false. No need to modify
         for j in range(1, n+1):
             if p[j-1] != '*':
                 break
