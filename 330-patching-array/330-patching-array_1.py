@@ -5,6 +5,8 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # miss: using nums[:i] can get any number in [0, miss)
+        
         i, add, miss = 0, 0, 1
         l = len(nums)
         
