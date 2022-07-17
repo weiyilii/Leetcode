@@ -4,6 +4,11 @@ class Solution(object):
         :type ratings: List[int]
         :rtype: int
         """
+        # Scan twice: from left to right, from right to left
+        # left2right gurantees right neighbor has more candies if right rating is higher
+        # right2left gurantees left neighbor has more candies if left rating is higher
+        # res will take max of each element
+        
         n = len(ratings)
         left2right = [1 for _ in range(n)]
         right2left = [1 for _ in range(n)]
