@@ -10,8 +10,8 @@ class Solution(object):
             return -1
         k = s/n
         
-        left = [0]*n
-        right = [0]*n
+        left = [0]*n # machines[i] 向左的净输出
+        right = [0]*n # machines[i] 向右的净输出
         
         right[0] = machines[0] - k
         left[n-1] = machines[n-1] - k
