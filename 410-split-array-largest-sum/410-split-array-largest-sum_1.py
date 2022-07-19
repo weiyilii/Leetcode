@@ -5,6 +5,12 @@ class Solution(object):
         :type m: int
         :rtype: int
         """
+        # Binary Search
+        # result must be within [max element, sum of elements] (of the array)
+        # doing a binary search in this range
+        # each value will be the possible result
+        # determine if this value satisfies the requirement (m)
+        
         sums = sum(nums)
         max_element = max(nums)
         
