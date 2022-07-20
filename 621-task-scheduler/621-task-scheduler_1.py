@@ -5,6 +5,10 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # Task with highest frequency determines number of chunks
+        # Other tasks with lower frequency follows highest task, dont need to worry their idles
+        # just compute idles determined by highest frequency task
+        
         counts = collections.Counter(tasks)
         maxFreq, maxCount = 0, 0
         for key in counts:
