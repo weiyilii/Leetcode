@@ -4,6 +4,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
+        # Greedy, map
+        # use 2 maps: nums frequency, subsequences (last element as key, count of subsequences ending with this element as value)
+        # check if current num can be appended to an exsiting subsequence or form a new one with num+1 and num+2
+        
         freq = collections.Counter(nums)
         subs = collections.defaultdict(int)
         
