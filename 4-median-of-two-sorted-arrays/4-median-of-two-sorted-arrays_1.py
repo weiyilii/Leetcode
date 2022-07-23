@@ -5,6 +5,10 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: float
         """
+        # Binary search idea
+        # Get kth element from 2 arrays
+        # Narrow down the indices range of one array each time
+        
         l = len(nums1) + len(nums2)
         if l % 2 == 1:
             return self.kth(nums1, nums2, l//2)
