@@ -4,6 +4,8 @@ class Solution(object):
         :type courses: List[List[int]]
         :rtype: int
         """
+        # Time: n*m
+        # Space: n
         courses.sort(key = lambda x: (x[1], x[0]))
         time = 0
         valid_list = []
