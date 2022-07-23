@@ -4,6 +4,9 @@ class Solution(object):
         :type courses: List[List[int]]
         :rtype: int
         """
+        # Use a max heap to track the durations of courses taken
+        # Anytime give the max duration
+        
         from heapq import heappush, heappop
         courses.sort(key = lambda x: (x[1], x[0]))
         time = 0
