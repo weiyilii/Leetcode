@@ -5,6 +5,10 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
+        # Binary Search twice
+        # Use each row's first to find closet row whose row[0] < target
+        # Then binary search in that row
+        
         m = len(matrix)
         n = len(matrix[0])
         
