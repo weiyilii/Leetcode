@@ -19,7 +19,7 @@ class Solution(object):
                 left_row = mid_row + 1
             else:
                 right_row = mid_row - 1
-        print(i)        
+       
         left_col, right_col = 0, n-1
         while left_col <= right_col:
             mid_col = left_col + (right_col - left_col)//2
