@@ -5,29 +5,17 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
-        m = len(matrix)
-        n = len(matrix[0])
+        m, n = len(matrix), len(matrix[0])
+        left, right = 0, m*n - 1
         
-        left_row, right_row = 0, m-1
-        i = 0
-        while left_row <= right_row:
-            mid_row = left_row + (right_row - left_row)//2
-            if matrix[mid_row][0] == target:
+        while left <= right:
+            mid = left + (right - left)//2
+            i, j = mid//n, mid%n
+            if matrix[i][j] == target:
                 return True
-            elif matrix[mid_row][0] < target:
-                i = mid_row
-                left_row = mid_row + 1
+            elif matrix[i][j] < target:
+                left = mid + 1
             else:
-                right_row = mid_row - 1
-       
-        left_col, right_col = 0, n-1
-        while left_col <= right_col:
-            mid_col = left_col + (right_col - left_col)//2
-            if matrix[i][mid_col] == target:
-                return True
-            elif matrix[i][mid_col] < target:
-                left_col = mid_col + 1
-            else:
-                right_col = mid_col - 1
+                right = mid - 1
         
         return False
