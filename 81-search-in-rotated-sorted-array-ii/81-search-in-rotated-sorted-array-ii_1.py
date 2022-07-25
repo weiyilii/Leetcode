@@ -5,6 +5,10 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
+        # Only difference with #33 is this allows duplicates,
+        # then there will be an edge case that initial nums[left] == nums[right] ([2,5,6,0,0,1,2])
+        # Shrink left and right until nums[left] != nums[right]
+        # then do the same
         left, right = 0, len(nums) - 1
         while left <= right and nums[left] == nums[right]:
             if nums[left] == target:
