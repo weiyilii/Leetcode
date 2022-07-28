@@ -5,6 +5,8 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        # Two pointers
+        # Time: O(1)
         left, right = 0, len(numbers) - 1
         while left < right:
             s = numbers[left] + numbers[right]
