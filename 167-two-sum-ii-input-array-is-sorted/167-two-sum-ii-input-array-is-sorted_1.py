@@ -5,6 +5,8 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        # Binary Search
+        # Time: O(nlogn)
         def binarySearch(left, right, target):
             while left <= right:
                 mid = left + (right - left)//2
