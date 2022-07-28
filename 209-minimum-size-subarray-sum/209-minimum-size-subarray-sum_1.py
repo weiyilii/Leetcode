@@ -5,6 +5,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Binary Search
+        
         if sum(nums) < target:
             return 0
         
@@ -15,6 +17,7 @@ class Solution(object):
             
             max_k = sum_k = sum(nums[:mid])
             for i in range(1, n - mid + 1):
+                # Important! Sum of sliding window
                 sum_k = sum_k-nums[i-1]+nums[i+mid-1]
                 max_k = max(max_k, sum_k)
                 
