@@ -5,6 +5,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Two pointers
+        # Towards right and add current element to sum
+        # Remove extra elements from left side
         left, nsum = 0, 0
         res = float('inf')
         for i in range(len(nums)):
