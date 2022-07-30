@@ -4,6 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Negative marking (hashmap idea)
+        # Still modifies the array
         for num in nums:
             cur = abs(num)
             if nums[cur] < 0:
