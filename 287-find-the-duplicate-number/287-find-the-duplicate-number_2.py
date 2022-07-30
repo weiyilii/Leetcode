@@ -4,6 +4,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Binary Search
+        # nums range from [1, n]
+        # in this range count num which is <= current mid
+        # if count <= mid, possible duplicate is greater than mid
+        # else, within left half
         n = len(nums) - 1
         left, right = 1, n
         while left < right:
