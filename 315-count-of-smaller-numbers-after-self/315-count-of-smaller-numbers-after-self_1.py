@@ -3,7 +3,8 @@ class Solution(object):
         """
         :type nums: List[int]
         :rtype: List[int]
-        """        
+        """ 
+        # Merge sort idea
         def helper(nums, sort, a, b):
             if a >= b:
                 return
