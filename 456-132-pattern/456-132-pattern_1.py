@@ -10,6 +10,9 @@ class Solution(object):
             if s1 < s3:
                 return True
             else:
+                # Maintain a decreasing stack
+                # Once a current element if less than stack top
+                # Keep poping out s3 until current not > stack top (valid s2 > s3, current as s2)
                 while stack and s1 > stack[-1]:
                     s3 = stack[-1]
                     stack.pop()
