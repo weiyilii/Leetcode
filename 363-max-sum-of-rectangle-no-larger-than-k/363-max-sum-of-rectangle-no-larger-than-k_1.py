@@ -24,7 +24,7 @@ class Solution(object):
         for i in range(n):
             right += array[i]
             left = self.findLeft(presum, right - k)
-            if left != None:
+            if left != None:  # Cannot use if left as left may = 0
                 ans = max(ans, right - left)
             presum.add(right)
         return ans
