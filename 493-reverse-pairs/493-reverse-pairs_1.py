@@ -4,6 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Divide and conquer, merge sort
         def helper(nums, left, right):
             if left >= right:
                 return 0
@@ -13,7 +14,7 @@ class Solution(object):
             
             j = mid + 1
             for i in range(left, mid + 1):
-                #j = mid + 1
+                # Important! No need to initialize j every time, it can inherit from last time as nums left and right half are sorted
                 while j <= right and nums[i] > 2*nums[j]:
                     j += 1
                 count += j - mid - 1
