@@ -1,27 +1,40 @@
-class Solution:
-    def reversePairs(self, nums: List[int]) -> int:
-        
-        def fn(nums, aux, lo, hi): 
-            """Return number of reverse pairs in nums[lo:hi]."""
-            if lo + 1 == hi: return 0 
-            mid = lo + hi >> 1
-            left = fn(aux, nums, lo, mid)
-            right = fn(aux, nums, mid, hi)
-            split = 0 
-            i, j = lo, mid
-            for _ in range(lo, hi): 
-                if i == mid or j < hi and aux[i] > 2*aux[j]: 
-                    split += mid - i 
+class Solution(object):
+    def reversePairs(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        def helper(nums, left, right):
+            if left >= right:
+                return 0
+            
+            mid = left + (right - left) // 2
+            count = helper(nums, left, mid) + helper(nums, mid + 1, right)
+            
+            j = mid + 1
+            for i in range(left, mid + 1):
+                #j = mid + 1
+                while j <= right and nums[i] > 2*nums[j]:
                     j += 1
-                else: i += 1
-            i, j = lo, mid
-            for k in range(lo, hi): 
-                if j == hi or i < mid and aux[i] < aux[j]: 
-                    nums[k] = aux[i]
-                    i += 1
-                else: 
-                    nums[k] = aux[j]
-                    j += 1
-            return left + split + right 
+                count += j - mid - 1
                 
-        return fn(nums, nums.copy(), 0, len(nums))
+            tmp = []
+            i, j = left, mid + 1
+            while i <= mid and j <= right:
+                if nums[i] <= nums[j]:
+                    tmp.append(nums[i])
+                    i += 1
+                else:
+                    tmp.append(nums[j])
+                    j += 1
+            if i <= mid:
+                tmp += nums[i:mid+1]
+            else:
+                tmp += nums[j:right+1]
+            
+            nums[left:right+1] = tmp
+                    
+            return count
+        
+        return helper(nums, 0, len(nums) - 1)
+                
