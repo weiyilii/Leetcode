@@ -16,7 +16,8 @@ class Solution(object):
                 while j <= right and nums[i] > 2*nums[j]:
                     j += 1
                 count += j - mid - 1
-            
+                
+            # Equivalent to solution 1 merge
             nums[left:right+1] = sorted(nums[left:right+1])
                     
             return count
