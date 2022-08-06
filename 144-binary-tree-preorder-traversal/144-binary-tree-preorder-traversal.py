@@ -10,11 +10,12 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
+        stack = [root]
         res = []
-        def dfs(root):
-            if root:
-                res.append(root.val)
-                dfs(root.left)
-                dfs(root.right)
-        dfs(root)
+        while stack:
+            node = stack.pop()
+            if node:
+                res.append(node.val)
+                stack.append(node.right)
+                stack.append(node.left)
         return res
