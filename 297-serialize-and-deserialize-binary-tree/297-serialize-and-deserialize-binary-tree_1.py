@@ -6,6 +6,7 @@
 #         self.right = None
 
 class Codec:
+    # DFS
     # Preorder Traversal idea
     def serialize(self, root):
         """Encodes a tree to a single string.
