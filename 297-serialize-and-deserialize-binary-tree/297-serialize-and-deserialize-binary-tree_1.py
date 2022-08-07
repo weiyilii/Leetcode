@@ -6,7 +6,7 @@
 #         self.right = None
 
 class Codec:
-
+    # Preorder Traversal idea
     def serialize(self, root):
         """Encodes a tree to a single string.
         
@@ -20,6 +20,7 @@ class Codec:
                 dfs_s(node.right)
             else:
                 vals.append('#')
+                
         vals = []
         dfs_s(root)
         res = ' '.join(vals)
@@ -41,7 +42,7 @@ class Codec:
                 node.right = dfs_d()
             return node
                 
-        data = data.split(' ')
+        data = data.split()
         vals = iter(data)
         res = dfs_d()
         return res
