@@ -13,17 +13,21 @@ class Codec:
         :type root: TreeNode
         :rtype: str
         """
-        def dfs_s(node):
+        from collections import deque
+        if not root:
+            return ''
+        q = deque()
+        q.append(root)
+        res = []
+        while q:
+            node = q.popleft()
             if node:
-                vals.append(str(node.val))
-                dfs_s(node.left)
-                dfs_s(node.right)
+                res.append(str(node.val))
+                q.append(node.left)
+                q.append(node.right)
             else:
-                vals.append('#')
-        vals = []
-        dfs_s(root)
-        res = ' '.join(vals)
-        return res
+                res.append('#')
+        return ' '.join(res)
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
@@ -31,20 +35,29 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        def dfs_d():
-            val = next(vals)
-            if val == '#':
-                return None
-            else:
-                node = TreeNode(int(val))
-                node.left = dfs_d()
-                node.right = dfs_d()
-            return node
-                
-        data = data.split(' ')
-        vals = iter(data)
-        res = dfs_d()
-        return res
+        from collections import deque
+        if data == '':
+            return None
+        data = data.split()
+        root = TreeNode(int(data[0]))
+        q = deque()
+        q.append(root)
+        
+        i = 1
+        while i < len(data):
+            parent = q.popleft()
+            if data[i] != '#':
+                left = TreeNode(int(data[i]))
+                parent.left = left
+                q.append(left)
+            i += 1
+            if data[i] != '#':
+                right = TreeNode(int(data[i]))
+                parent.right = right
+                q.append(right)
+            i += 1
+        
+        return root
 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
