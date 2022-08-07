@@ -6,7 +6,8 @@
 #         self.right = None
 
 class Codec:
-
+    # BFS
+    # Level order traversal using queue
     def serialize(self, root):
         """Encodes a tree to a single string.
         
