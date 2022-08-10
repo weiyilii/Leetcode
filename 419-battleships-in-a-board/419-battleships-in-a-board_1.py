@@ -4,6 +4,8 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: int
         """
+        # Same as #200. Number of islands
+        # DFS
         res = 0
         m, n = len(board), len(board[0])
         for i in range(m):
