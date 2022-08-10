@@ -7,7 +7,7 @@ class Node:
         self.next = next
         self.child = child
 """
-
+# DFS: recursive
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
         def dfs(head):
