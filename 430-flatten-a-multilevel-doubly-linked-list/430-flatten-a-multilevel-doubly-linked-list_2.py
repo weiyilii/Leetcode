@@ -14,6 +14,9 @@ class Solution(object):
         :type head: Node
         :rtype: Node
         """
+        # Stack
+        # prev maintains the tail of previous sub list
+        # stack keeps new start
         if not head:
             return None
         prev = Node(0)
