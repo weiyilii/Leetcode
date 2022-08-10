@@ -4,6 +4,10 @@ class Solution(object):
         :type heights: List[List[int]]
         :rtype: List[List[int]]
         """
+        # "Flood from ocean"
+        # Start from borders and use dfs to visit as deep as possible
+        # Use 2 dp to store pacific and atlantic visits
+        
         m, n = len(heights), len(heights[0])
         pacific = [[False for j in range(n)] for i in range(m)]
         atlantic = [[False for j in range(n)] for i in range(m)]
