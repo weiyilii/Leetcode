@@ -5,6 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution(object):
+    # DFS, DP
     def rob(self, root):
         """
         :type root: TreeNode
