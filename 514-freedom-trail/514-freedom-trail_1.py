@@ -5,6 +5,8 @@ class Solution(object):
         :type key: str
         :rtype: int
         """
+        # Time: O(MNN)
+        # Space: O(MN)
         m, n = len(key), len(ring)
         dp = [[float('inf') for j in range(n)] for i in range(m)]
         pos = dict()
