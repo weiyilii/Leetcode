@@ -11,6 +11,7 @@ class Solution(object):
         :type targetSum: int
         :rtype: int
         """
+        # DFS, Prefix Sum
         self.result = 0
         seen = collections.defaultdict(int)
         seen[0] = 1
@@ -26,4 +27,6 @@ class Solution(object):
         seen[curSum] += 1
         self.dfs(root.left, curSum, seen, targetSum)
         self.dfs(root.right, curSum, seen, targetSum)
+        # Important! After dfs on left and right child, it will move to another branch with a different parent node
+        # curSum will be different, remove the previous one from seen
         seen[curSum] -= 1
