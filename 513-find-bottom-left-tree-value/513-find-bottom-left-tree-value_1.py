@@ -5,6 +5,9 @@
 #         self.left = left
 #         self.right = right
 class Solution(object):
+    # DFS
+    # left then right
+    # leftmost is on the seen[max_level][0]
     def findBottomLeftValue(self, root):
         """
         :type root: TreeNode
