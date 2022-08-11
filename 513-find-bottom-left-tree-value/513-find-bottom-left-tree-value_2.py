@@ -10,6 +10,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        # BFS
         from collections import deque
         q = deque()
         q.append(root)
