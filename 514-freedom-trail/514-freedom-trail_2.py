@@ -5,6 +5,10 @@ class Solution(object):
         :type key: str
         :rtype: int
         """
+        # Optimization based on solution 1
+        # Time: O(MNN)
+        # linear space: only maintain latest state
+        
         m, n = len(key), len(ring)
         pos = dict()
         for i, r in enumerate(ring):
