@@ -21,7 +21,10 @@ class Solution(object):
         left = self.dfs(node.left)
         right = self.dfs(node.right)
         
+        # Using current node as root, the longest path passing through root is left + right
+        # Update self.res by comparison
         self.res = max(self.res, left + right)
         
+        # If return , this means this node cannot be root, it can only take one direction: max(left, right) as longest path
         return max(left, right) + 1
         
