@@ -33,7 +33,6 @@ class Solution(object):
                         if di == 0 and dj == 0:
                             continue
                         dfs(i + di, j + dj)
-            #return 
         
         dfs(i, j)
         return board
