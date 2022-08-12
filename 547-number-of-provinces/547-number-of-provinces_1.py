@@ -4,10 +4,15 @@ class Solution(object):
         :type isConnected: List[List[int]]
         :rtype: int
         """
+        # DFS
+        # Use visited (a list of boolean) to track if we have visited this city
         n = len(isConnected)
         visited = [False]*n
         
         def dfs(i):
+            # Given i, check each j (!= i), if isConnected[i][j] is 1
+            # If so, update visited[j] as True
+            # Continue dfs with this j
             for j in range(n):
                 if i == j:
                     continue
