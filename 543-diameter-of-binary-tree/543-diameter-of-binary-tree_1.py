@@ -25,6 +25,6 @@ class Solution(object):
         # Update self.res by comparison
         self.res = max(self.res, left + right)
         
-        # If return , this means this node cannot be root, it can only take one direction: max(left, right) as longest path
+        # If return , this means this node cannot be root, it can only take one direction: max(left, right) + 1 as longest path
         return max(left, right) + 1
         
