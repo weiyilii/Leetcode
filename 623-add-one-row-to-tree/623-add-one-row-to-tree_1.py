@@ -12,6 +12,7 @@ class Solution(object):
         :type depth: int
         :rtype: TreeNode
         """
+        # BFS
         from collections import deque
         
         if depth == 1:
