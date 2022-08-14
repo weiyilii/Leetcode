@@ -4,6 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # DFS
         def dfs(i):
             if nums[i] not in s:
                 s.add(nums[i])
