@@ -11,6 +11,8 @@ class Solution(object):
         :type root2: TreeNode
         :rtype: TreeNode
         """
+        # DFS
+        # Use root1 as the main tree, modify it as final result
         if not root1 and not root2:
             return
         if not root1:
