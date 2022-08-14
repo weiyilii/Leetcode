@@ -8,15 +8,16 @@ class Solution(object):
         """
         graph = collections.defaultdict(list)
         for u, v, w in times:
-            graph[u].append((v, w))
-            
+            graph[u].append((w, v))
+        for u in graph:
+            graph[u].sort(key = lambda x: x[0])
         visited = {} 
         
         def dfs(src, dst, time):
             if dst not in visited or time < visited[dst]:
                 visited[dst] = time
                 if dst in graph:
-                    for v, w in graph[dst]:
+                    for w, v in graph[dst]:
                         dfs(dst, v, time + w)
         
         dfs(k, k, 0)
