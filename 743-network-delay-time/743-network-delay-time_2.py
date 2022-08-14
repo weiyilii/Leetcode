@@ -6,6 +6,7 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        # DFS
         graph = collections.defaultdict(list)
         for u, v, w in times:
             graph[u].append((w, v))
