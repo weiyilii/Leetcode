@@ -4,6 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # DFS idea
+        # use visited to track visited nodes, without using recursive methods
         res = 0
         visited = set()
         for i in range(len(nums)):
