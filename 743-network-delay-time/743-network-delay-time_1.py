@@ -6,6 +6,8 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        # BFS
+        # Layer by layer, accumulate time
         graph = collections.defaultdict(list)
         for u, v, w in times:
             graph[u].append((v, w))
@@ -16,6 +18,7 @@ class Solution(object):
             node, t = q.popleft()
             if node not in visited or t < visited[node]:
                 visited[node] = t
+                # Only when the condition above satisfied, append its children to queue, otherwise will get duplicates
                 for child, time in graph[node]:
                     q.append((child, t + time))
         if len(visited) < n:
