@@ -19,7 +19,6 @@ class Solution(object):
         for source, target in edges:
             seen = set()
             if source in graph and target in graph and dfs(source, target):
-            #if dfs(source, target):
                 return [source, target]
             graph[source].add(target)
             graph[target].add(source)
