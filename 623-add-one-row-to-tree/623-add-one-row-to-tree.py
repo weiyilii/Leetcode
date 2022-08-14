@@ -12,6 +12,7 @@ class Solution(object):
         :type depth: int
         :rtype: TreeNode
         """
+        # Revursive DFS
         if depth == 1:
             new = TreeNode(val, left = root)
             return new
