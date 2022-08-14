@@ -6,6 +6,7 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        # BFS + Heap
         from heapq import heappush, heappop
         graph = collections.defaultdict(list)
         for u, v, w in times:
