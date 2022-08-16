@@ -10,6 +10,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[float]
         """
+        # DFS
         res = [0]
         count = [0]
         
