@@ -5,7 +5,7 @@ class Node(object):
         self.val = val
         self.children = children
 """
-
+# Recursive, dfs
 class Solution(object):
     def postorder(self, root):
         """
