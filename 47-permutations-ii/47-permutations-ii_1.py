@@ -4,6 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        # DFS, based on #46
         n = len(nums)
         res = []
         
