@@ -4,6 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        # DFS
         res = []
         
         def dfs(nums, path):
