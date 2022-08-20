@@ -4,17 +4,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        res = []
+        res, cur = [[]], []
         nums.sort()
         
-        def dfs(path, prev):
-            res.append(path)
-            unique = {}
-            for i in range(prev+1, len(nums)):
-                if nums[i] not in unique:
-                    unique[nums[i]] = i
-            for key in unique:
-                dfs(path + [key], unique[key])
+        for i in range(len(nums)):
+            if i > 0 and nums[i] == nums[i-1]:
+                cur = [item + [nums[i]] for item in cur]
+            else:
+                cur = [item + [nums[i]] for item in res]
+            res += cur
         
-        dfs([], -1)
         return res
