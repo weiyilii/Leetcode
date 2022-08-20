@@ -4,6 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        # DFS, Backtracking
         n = len(nums)
         counter = collections.Counter(nums)
         res = []
@@ -11,6 +12,7 @@ class Solution(object):
         def dfs(path, counter):
             if len(path) == n:
                 res.append(path)
+            # each step, instead of iterating over all candidates, just visit all unique numbers
             for num in counter:
                 if counter[num] > 0:
                     counter[num] -= 1
