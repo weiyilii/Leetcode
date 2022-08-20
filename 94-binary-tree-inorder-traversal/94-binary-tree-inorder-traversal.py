@@ -10,8 +10,8 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        res, stack = [], []
-        cur = root
+        cur, stack = root, []
+        res = []
         while cur or stack:
             while cur:
                 stack.append(cur)
