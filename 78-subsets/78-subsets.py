@@ -6,13 +6,11 @@ class Solution(object):
         """
         res = []
         
-        def dfs(path, visited):
+        def dfs(path, prev):
             res.append(path)
-            i = visited[-1]
+            i = prev
             for j in range(i+1, len(nums)):
-                visited.append(j)
-                dfs(path + [nums[j]], visited)
-                visited.pop()
+                dfs(path + [nums[j]], j)
         
-        dfs([], [-1])
+        dfs([], -1)
         return res
