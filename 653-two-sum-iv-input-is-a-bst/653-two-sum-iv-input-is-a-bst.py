@@ -12,17 +12,13 @@ class Solution(object):
         :rtype: bool
         """
         d = set()
-        self.res = False
         
         def dfs(root):
             if not root:
-                return
+                return False
             if k - root.val in d:
-                self.res = True
-                return
+                return True
             d.add(root.val)
-            dfs(root.left)
-            dfs(root.right)
+            return dfs(root.left) or dfs(root.right)
         
-        dfs(root)
-        return self.res
+        return dfs(root)
