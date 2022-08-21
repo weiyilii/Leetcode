@@ -9,7 +9,15 @@ class Solution(object):
         def dfs(q):
             i = len(q)
             if i == n:
-                board = self.getBoard(q)   
+                board = []
+                for k in range(n):
+                    row = ""
+                    for v in range(n):
+                        if v == q[k]:
+                            row += "Q"
+                        else:
+                            row += "."
+                    board.append(row)   
                 res.append(board)
                 return
             
@@ -27,17 +35,3 @@ class Solution(object):
             if x + y == i + j or x - y == i - j or y == j:
                 return False
         return True
-    
-    def getBoard(self, q):
-        n = len(q)
-        board = []
-        for k in range(n):
-            row = ""
-            for v in range(n):
-                if v == q[k]:
-                    row += "Q"
-                else:
-                    row += "."
-            board.append(row)
-        return board
-        
