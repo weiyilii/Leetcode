@@ -23,7 +23,6 @@ class Solution(object):
             for j in range(i+1, n-1):
                 n1, n2 = num[:i+1], num[i+1:j+1]
                 if (n1 == "0" or n1[0] != "0") and (n2 == "0" or n2[0] != "0"):
-                    #print(n1, n2)
                     if dfs(int(n1), int(n2), j):
                         return True
         return False
