@@ -9,20 +9,13 @@ class Solution(object):
         def dfs(q):
             i = len(q)
             if i == n:
-                board = []
-                for k in range(n):
-                    row = ""
-                    for v in range(n):
-                        if v == q[k][1]:
-                            row += "Q"
-                        else:
-                            row += "."
-                    board.append(row)
+                board = self.getBoard(q)   
                 res.append(board)
                 return
+            
             for j in range(n):
                 if self.isValid(q, i, j):
-                    q.append([i, j])
+                    q.append(j)
                     dfs(q)
                     q.pop()
         
@@ -30,7 +23,21 @@ class Solution(object):
         return res
     
     def isValid(self, q, i, j):
-        for x, y in q:
+        for x, y in enumerate(q):
             if x + y == i + j or x - y == i - j or y == j:
                 return False
         return True
+    
+    def getBoard(self, q):
+        n = len(q)
+        board = []
+        for k in range(n):
+            row = ""
+            for v in range(n):
+                if v == q[k]:
+                    row += "Q"
+                else:
+                    row += "."
+            board.append(row)
+        return board
+        
