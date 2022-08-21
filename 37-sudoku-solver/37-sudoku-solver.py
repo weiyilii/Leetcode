@@ -7,7 +7,7 @@ class Solution(object):
         def solve():
             for i in range(9):
                 for j in range(9):
-                    if board[i][j] == '.':
+                    if board[i][j] == ".":
                         for n in range(1, 10):
                             c = str(n)
                             if self.isValid(board, i, j, c):
@@ -15,22 +15,21 @@ class Solution(object):
                                 if solve():
                                     return True
                                 else:
-                                    board[i][j] = '.'
+                                    board[i][j] = "."
                         return False
             return True
         
         solve()
-                                    
     
-    def isValid(self, board, row, col, c):
-        for i in range(9):
-            if board[row][i] == c:
+    def isValid(self, board, i, j, c):
+        for k in range(9):
+            if board[i][k] == c:
                 return False
-            if board[i][col] == c:
+            if board[k][j] == c:
                 return False
-        i, j = (row//3)*3, (col//3)*3
-        for x in range(i, i+3):
-            for y in range(j, j+3):
-                if board[x][y] == c:
+        x, y = (i//3)*3, (j//3)*3
+        for m in range(x, x+3):
+            for n in range(y, y+3):
+                if board[m][n] == c:
                     return False
         return True
