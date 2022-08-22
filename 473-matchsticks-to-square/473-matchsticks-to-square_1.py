@@ -1,5 +1,6 @@
 class Solution:
     def makesquare(self, matchsticks: List[int]) -> bool:
+        # DFS, very slow
         
         if sum(matchsticks) % 4 != 0:
             return False
