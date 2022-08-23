@@ -6,7 +6,7 @@ class Solution:
         matchsticks.sort(reverse = True)
         p = s // 4
         
-        @cache
+        @cache # adding cache, saving some time
         def dfs(i, l1, l2, l3, l4):
             if i == len(matchsticks) - 1:
                 if l1 == l2 == l3 == p:
