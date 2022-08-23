@@ -4,9 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        n = len(nums)
-        max_seen = 0
-        for i in range(n-1):
-            if i <= max_seen:
-                max_seen = max(max_seen, i+nums[i])
-        return max_seen >= n-1
+        far = 0
+        for i in range(len(nums)):
+            if i <= far:
+                far = max(far, i + nums[i])
+        return far >= len(nums) - 1
