@@ -4,6 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
+        # DP, Greedy
         far = 0
         for i in range(len(nums)):
             if i <= far:
