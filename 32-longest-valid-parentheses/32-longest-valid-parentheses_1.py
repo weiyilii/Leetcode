@@ -4,6 +4,10 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # Greedy
+        # Scan twice: left -> right; right -> left
+        # left -> right: keep count of left >= count of right, always expecting more right half will appear, otherwise reset two counters
+        # right -> left, keep count of right >= count of left, always expecting more left half will appear, otherwise reset two counters
         left, right = 0, 0
         l = len(s)
         res = 0
