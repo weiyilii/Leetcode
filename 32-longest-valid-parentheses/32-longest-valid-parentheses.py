@@ -4,6 +4,8 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # DP
+        # dp[i] = longest valid parenthese length ends at s[i]
         res = 0
         dp = [0]*(len(s))
         for i in range(1, len(s)):
