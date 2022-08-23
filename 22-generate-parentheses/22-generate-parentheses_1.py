@@ -4,6 +4,7 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
+        # Backtracking, DFS
         res = []
         
         def dfs(path, left, right):
