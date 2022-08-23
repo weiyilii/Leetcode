@@ -4,18 +4,15 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        stack = [-1]
         res = 0
-        # keep the topmost element of the stack 
-        # be the index of element right before each valid parentheses
+        stack = [-1]
         for i in range(len(s)):
-            p = s[i]
-            if p == '(':
+            if s[i] == "(":
                 stack.append(i)
             else:
                 stack.pop()
-                if len(stack) > 0:
-                    res = max(res, i - stack[-1])
-                else:
+                if not stack:
                     stack.append(i)
+                else:
+                    res = max(res, i - stack[-1])
         return res
