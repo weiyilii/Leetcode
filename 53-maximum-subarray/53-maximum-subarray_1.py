@@ -4,6 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # DP
         prev = nums[0]
         res = prev
         for i in range(1, len(nums)):
