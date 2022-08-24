@@ -16,7 +16,7 @@ class Solution(object):
                 next_max = max(next_max, j + nums[j])
                 if next_max >= l-1:
                     return level + 1
+            i = cur_max + 1
             level += 1
             cur_max = next_max
-            i = j
         return -1
