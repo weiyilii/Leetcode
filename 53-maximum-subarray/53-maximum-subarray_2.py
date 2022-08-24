@@ -4,6 +4,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Divide and Conquer
+        # array, index from left to right with mid
+        # max subarray possibilities:
+        # 1. entirely within left half: left, mid-1 (recursively call)
+        # 2. entirely within right half: mid+1, right (recursively call)
+        # 3. having mid inside: [somewhere:mid] + [mid] + [mid+1:somewhere] (loop sum and compare) (must include mid and may extend both sides)
+        # then compare 3 options, return the max (combine)
         def dq(left, right):
             if left > right:
                 return float('-inf')
