@@ -5,6 +5,7 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # Math
         m, n = m-1, n-1
         denominator, divisor = 1, 1
         for i in range(n):
