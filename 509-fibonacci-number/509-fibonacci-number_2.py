@@ -4,6 +4,7 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # Recursion
         if n == 0:
             return 0
         if n == 1:
