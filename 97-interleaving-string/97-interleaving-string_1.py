@@ -6,6 +6,7 @@ class Solution(object):
         :type s3: str
         :rtype: bool
         """
+        # 2-DP
         m, n = len(s1), len(s2)
         if m + n != len(s3):
             return False
