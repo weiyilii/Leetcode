@@ -4,6 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # DP, constant space
         if s[0] == "0":
             return 0
         
