@@ -6,6 +6,7 @@ class Solution(object):
         :type s3: str
         :rtype: bool
         """
+        # 1-DP, Optimization of solution 1
         m, n = len(s1), len(s2)
         if m + n != len(s3):
             return False
