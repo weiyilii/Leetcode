@@ -5,13 +5,15 @@ class Solution(object):
         :rtype: int
         """
         l = len(height)
-        left_max, right_max = [0]*l, [0]*l
-        left, right, res = 0, 0, 0
-        for i in range(l):
-            left = max(left, height[i])
-            right = max(right, height[l-i-1])
-            left_max[i] = left
-            right_max[l-i-1] = right
-        for i in range(l):
-            res += min(left_max[i], right_max[i]) - height[i]
+        left_max, right_max = 0, 0
+        left, right, res = 0, l - 1, 0
+        while left <= right:
+            left_max = max(left_max, height[left])
+            right_max = max(right_max, height[right])
+            if height[left] < height[right]:
+                res += left_max - height[left]
+                left += 1
+            else:
+                res += right_max - height[right]
+                right -= 1
         return res
