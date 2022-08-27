@@ -4,9 +4,9 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        dp = prices[:]
         res = 0
-        for i in range(len(dp)-2, -1, -1):
-            dp[i] = max(dp[i], dp[i+1])
-            res = max(res, dp[i] - prices[i])
+        right_max = prices[-1]
+        for i in range(len(prices)-2, -1, -1):
+            right_max = max(prices[i], right_max)
+            res = max(res, right_max - prices[i])
         return res
