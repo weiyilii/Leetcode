@@ -5,17 +5,20 @@ class Solution(object):
         :type denominator: int
         :rtype: str
         """
-        sign = '-' if numerator*denominator < 0 else ''
-        i, remainder = divmod(abs(numerator), abs(denominator))
-        r = {}
-        res = '.'
-        # r tracks all remainders, if new remainder has been in r, remainder will repeat
-        while remainder > 0 and remainder not in r:
-            # len(res) will tell where to insert "("
-            r[remainder] = len(res)
-            n, remainder = divmod(remainder*10, abs(denominator))
-            res += str(n)
-        if remainder in r:
-            index = r[remainder]
-            res = res[:index] + '(' + res[index:] + ')'
-        return str(sign) + str(i) + res if res != '.' else str(sign) + str(i)
+        sign = "-" if numerator*denominator < 0 else ""
+        n, r = divmod(abs(numerator), abs(denominator))
+        seen = {}
+        res = "."
+        
+        while r not in seen and r > 0:
+            seen[r] = len(res)
+            q, r = divmod(r*10, abs(denominator))
+            res += str(q)
+            
+        if r in seen:
+            index = seen[r]
+            res = res[:seen[r]] + "(" + res[seen[r]:] + ")"
+        if res == ".":
+            return sign + str(n)
+        else:
+            return sign + str(n) + res
