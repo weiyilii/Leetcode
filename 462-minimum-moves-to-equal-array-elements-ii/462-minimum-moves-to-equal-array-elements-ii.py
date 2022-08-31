@@ -4,13 +4,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        res = 0
         nums.sort()
-        i, j = 0, len(nums)-1
-        
-        while i <= j:
+        i, j = 0, len(nums) - 1
+        res = 0
+        while i < j:
             res += nums[j] - nums[i]
             i += 1
             j -= 1
-        
         return res
