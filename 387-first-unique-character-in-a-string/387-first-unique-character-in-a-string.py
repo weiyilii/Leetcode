@@ -4,8 +4,8 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        count = collections.Counter(s)
+        counts = collections.Counter(s)
         for i in range(len(s)):
-            if count[s[i]] == 1:
+            if counts[s[i]] == 1:
                 return i
         return -1
