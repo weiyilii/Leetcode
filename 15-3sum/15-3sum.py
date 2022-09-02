@@ -22,14 +22,12 @@ class Solution(object):
             return 0
         res = []
         left, right = i, l - 1
-        prev = nums[right] + 1
         while left < right:
-            if nums[right] != prev and nums[left] + nums[right] == target:
-                res.append([nums[i - 1], nums[left], nums[right]])
-                prev = nums[right]
+            if nums[left] + nums[right] > target or (right < l-1 and nums[right] == nums[right + 1]):
                 right -= 1
             elif nums[left] + nums[right] < target:
                 left += 1
-            else:
+            elif nums[left] + nums[right] == target:
+                res.append([nums[i - 1], nums[left], nums[right]])
                 right -= 1
         return res
