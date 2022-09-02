@@ -13,7 +13,6 @@ class Solution(object):
         while i < l - 2:
             if i == 0 or nums[i] != nums[i-1]:
                 res += self.twoSum(nums, i + 1, -nums[i])
-                prev = nums[i]
             i += 1
         return res
     
