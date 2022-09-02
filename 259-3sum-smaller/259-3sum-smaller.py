@@ -11,18 +11,20 @@ class Solution(object):
         
         nums.sort()
         res = 0
-        p1, p2, p3 = 0, 1, 2
-        for p1 in range(l-2):
-            if nums[p1] > 0 and nums[p1] > target:
-                break
-            sum2 = target - nums[p1]
-            for p2 in range(p1+1, l-1):
-                if nums[p2] > 0 and nums[p2] > sum2:
-                    break
-                for p3 in range(p2+1, l):
-                    if nums[p3] < sum2 - nums[p2]:
-                        res += 1
-                        #print(p1, p2, p3)
-                    else:
-                        break
+        for i in range(l - 2):
+            res += self.twoSumSmaller(nums, i + 1, target - nums[i])
+        return res
+    
+    def twoSumSmaller(self, nums, i, target):
+        l = len(nums)
+        if i > l - 2:
+            return 0
+        left, right = i, l - 1
+        res = 0
+        while left < right:
+            if nums[left] + nums[right] >= target:
+                right -= 1
+            else:
+                res += right - left
+                left += 1
         return res
