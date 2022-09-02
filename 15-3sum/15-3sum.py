@@ -9,9 +9,9 @@ class Solution(object):
             return 0
         res = []
         nums.sort()
-        i, prev = 0, nums[0] - 1
+        i = 0
         while i < l - 2:
-            if nums[i] != prev:
+            if i == 0 or nums[i] != nums[i-1]:
                 res += self.twoSum(nums, i + 1, -nums[i])
                 prev = nums[i]
             i += 1
