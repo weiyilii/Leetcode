@@ -5,14 +5,22 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        nsum, left = 0, 0
-        res = float('inf')
-        for i in range(len(nums)):
-            nsum += nums[i]
-            while nsum >= target:
-                res = min(res, i - left + 1)
-                nsum -= nums[left]
-                left += 1
-        if res <= len(nums):
-            return res
-        return 0
+        if sum(nums) < target:
+            return 0
+        
+        left, right = 0, len(nums)
+        while left < right:
+            mid = left + (right - left)//2
+            kmax = ksum = sum(nums[:mid])
+            
+            for i in range(len(nums) - mid):
+                ksum += nums[i+mid] - nums[i]
+                kmax = max(kmax, ksum)
+            
+            if kmax == target:
+                return mid
+            elif kmax < target:
+                left = mid + 1
+            else:
+                right = mid
+        return right
