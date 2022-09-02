@@ -10,6 +10,7 @@ class Solution(object):
             if str1[i] != str2[i]:
                 return res
             d = str1[:i+1]
-            if len(str1) == str1.count(d)*(i+1) and len(str2) == str2.count(d)*(i+1):
-                res = d
+            if len(str1) % (i + 1) == 0 and len(str2) % (i + 1) == 0:
+                if len(str1) == str1.count(d)*(i+1) and len(str2) == str2.count(d)*(i+1):
+                    res = d
         return res
