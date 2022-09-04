@@ -4,5 +4,4 @@ class Solution(object):
         :type sentence: str
         :rtype: bool
         """
-        count = collections.Counter(sentence)
-        return len(count) == 26
+        return len(set(sentence)) == 26
