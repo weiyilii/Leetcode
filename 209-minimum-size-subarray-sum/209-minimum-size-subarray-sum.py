@@ -5,15 +5,21 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        left, ksum = 0, 0
-        res = float('inf')
-        for i in range(len(nums)):
-            ksum += nums[i]
-            while ksum >= target:
-                res = min(res, i - left + 1)
-                ksum -= nums[left]
-                left += 1
-        if res > len(nums):
+        if sum(nums) < target:
             return 0
-        else:
-            return res
+        
+        left, right = 1, len(nums)
+        while left < right:
+            mid = left + (right - left) // 2
+            ksum = kmax = sum(nums[:mid])
+            for i in range(len(nums) - mid):
+                ksum += nums[i + mid] - nums[i]
+                kmax = max(ksum, kmax)
+            
+            if kmax == target:
+                return mid
+            elif kmax > target:
+                right = mid
+            else:
+                left = mid + 1
+        return right
