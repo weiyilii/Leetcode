@@ -11,9 +11,8 @@ class Solution(object):
         di = [-2, -1, 1, 2, 2, 1, -1, -2]
         dj = [-1, -2, -2, -1, 1, 2, 2, 1]
         lastdp[row][column] = 1
-        k -= 1
-        dp = lastdp
-        while k >= 0:
+        
+        for _ in range(k):
             dp = [[0]*n for _ in range(n)]
             for i in range(n):
                 for j in range(n):
@@ -22,10 +21,9 @@ class Solution(object):
                         if x >= 0 and x < n and y >= 0 and y < n:
                             dp[i][j] += lastdp[x][y]/8.0
             lastdp = dp
-            k -= 1
             
         res = 0
         for i in range(n):
             for j in range(n):
-                res += dp[i][j]
+                res += lastdp[i][j]
         return res
