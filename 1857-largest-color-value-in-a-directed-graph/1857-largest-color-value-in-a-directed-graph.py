@@ -41,7 +41,7 @@ class Solution(object):
                     if degree[dst] == 0:
                         dp[dst][ord(colors[dst]) - ord("a")] += 1
                         q.append(dst)
-        #print(dp)            
+                        
         if seen == n:
             return res
         else:
