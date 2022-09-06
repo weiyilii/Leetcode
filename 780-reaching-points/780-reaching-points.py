@@ -12,12 +12,12 @@ class Solution(object):
                 break
             elif tx > ty:
                 if ty > sy:
-                    tx = tx % ty
+                    tx %= ty
                 else:
                     return (tx - sx) % ty == 0
             else:
                 if tx > sx:
-                    ty = ty % tx
+                    ty %= tx
                 else:
                     return (ty - sy) % tx == 0
         return tx == sx and ty == sy
