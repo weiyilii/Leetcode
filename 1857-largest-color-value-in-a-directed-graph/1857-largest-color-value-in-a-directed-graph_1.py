@@ -7,8 +7,10 @@ class Solution(object):
         """
         from collections import deque
         
+        # graph is the adjency list
         graph = {}
         n = len(colors)
+        # degree[i] = how many edges that ends with i
         degree = [0]*n
         
         for src, dst in edges:
@@ -17,11 +19,13 @@ class Solution(object):
             else:
                 graph[src] = [dst]
             degree[dst] += 1
-            
+        
+        # dp[i][j] = max count of color j (j = color - "a") in all paths that ends with i
         dp = [[0]*26 for _ in range(n)]
         
         q = deque([])
         for i in range(n):
+            # Initialize q by appending nodes that can only be starting points
             if degree[i] == 0:
                 q.append(i)
                 dp[i][ord(colors[i]) - ord("a")] = 1
@@ -37,6 +41,9 @@ class Solution(object):
                 for dst in graph[src]:
                     for i in range(26):
                         dp[dst][i] = max(dp[dst][i], dp[src][i])
+                    # everytime meets dst, degree[dst] -= 1
+                    # when degree[dst] == 0, means visited all edges end with dst
+                    # now can append dst to queue and add dst's own color to dp
                     degree[dst] -= 1
                     if degree[dst] == 0:
                         dp[dst][ord(colors[dst]) - ord("a")] += 1
