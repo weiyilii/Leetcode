@@ -5,6 +5,7 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: bool
         """
+        # DP
         l = len(s)
         dp = [False]*l
         for i in range(l):
