@@ -9,15 +9,17 @@ class Solution(object):
         :type lists: List[ListNode]
         :rtype: ListNode
         """
-        if not lists:
+        return self.mergeK(lists, 0, len(lists) - 1)
+        
+    def mergeK(self, lists, left, right):
+        if left > right:
             return 
-        elif len(lists) == 1:
-            return lists[0]
+        elif left == right:
+            return lists[left]
         else:
-            left, right = 0, len(lists) - 1
             mid = left + (right - left) // 2
-            l1 = self.mergeKLists(lists[left:mid + 1])
-            l2 = self.mergeKLists(lists[mid + 1:right + 1])
+            l1 = self.mergeK(lists, left, mid)
+            l2 = self.mergeK(lists, mid + 1, right)
             return self.mergeTwoLists(l1, l2)
     
     def mergeTwoLists(self, l1, l2):
