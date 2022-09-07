@@ -9,6 +9,7 @@ class Solution(object):
         :type lists: List[ListNode]
         :rtype: ListNode
         """
+        # Divide and Conquer, Merge Sort
         return self.mergeK(lists, 0, len(lists) - 1)
         
     def mergeK(self, lists, left, right):
