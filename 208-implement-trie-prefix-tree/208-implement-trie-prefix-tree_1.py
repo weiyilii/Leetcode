@@ -1,6 +1,7 @@
 class TrieNode(object):
     
     def __init__(self):
+        # Basic dictionary
         self.children = dict()
         self.is_word = False
 
