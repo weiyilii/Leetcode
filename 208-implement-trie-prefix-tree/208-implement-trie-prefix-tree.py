@@ -26,9 +26,9 @@ class Trie(object):
         """
         cur = self.root
         for letter in word:
-            if letter not in cur.children:
+            cur = cur.children.get(letter)
+            if cur is None:
                 return False
-            cur = cur.children[letter]
         return cur.is_word
 
     def startsWith(self, prefix):
@@ -38,9 +38,9 @@ class Trie(object):
         """
         cur = self.root
         for letter in prefix:
-            if letter not in cur.children:
+            cur = cur.children.get(letter)
+            if cur is None:
                 return False
-            cur = cur.children[letter]
         return True
 
 # Your Trie object will be instantiated and called as such:
