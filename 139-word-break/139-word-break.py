@@ -1,3 +1,20 @@
+class TrieNode(object):
+    def __init__(self):
+        self.children = dict()
+        self.is_word = False
+
+class Trie(object):
+    def __init__(self):
+        self.root = TrieNode()
+        
+    def insert(self, word):
+        cur = self.root
+        for letter in word:
+            if letter not in cur.children:
+                cur.children[letter] = TrieNode()
+            cur = cur.children[letter]
+        cur.is_word = True
+
 class Solution(object):
     def wordBreak(self, s, wordDict):
         """
@@ -5,11 +22,19 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: bool
         """
+        t = Trie()
+        for word in wordDict:
+            t.insert(word)
         l = len(s)
-        dp = [False]*l
-        for i in range(l):
-            for word in wordDict:
-                wlen = len(word)
-                if s[i - wlen + 1:i + 1] == word and (dp[i - wlen] or i - wlen == -1):
+        dp = [False]*(l + 1)
+        dp[-1] = True
+        for i in range(l-1, -1, -1):
+            cur = t.root
+            j = i
+            while j < l and cur:
+                cur = cur.children.get(s[j])
+                if cur and cur.is_word and dp[j+1]:
                     dp[i] = True
-        return dp[-1]
+                    break
+                j += 1
+        return dp[0]
