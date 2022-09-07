@@ -1,7 +1,7 @@
 class TrieNode(object):
     
     def __init__(self):
-        self.children = collections.defaultdict(TrieNode)
+        self.children = dict()
         self.is_word = False
 
 class Trie(object):
@@ -16,6 +16,8 @@ class Trie(object):
         """
         cur = self.root
         for letter in word:
+            if letter not in cur.children:
+                cur.children[letter] = TrieNode()
             cur = cur.children[letter]
         cur.is_word = True
 
