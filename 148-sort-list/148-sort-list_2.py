@@ -9,6 +9,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        # Divide and Conquer, Merge Sort
         if not head or not head.next:
             return head
         dummy = prev = ListNode(0, head)
