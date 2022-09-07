@@ -9,9 +9,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        if not head:
-            return
-        if not head.next:
+        if not head or not head.next:
             return head
         dummy = prev = ListNode(0, head)
         fast, slow = head, head
