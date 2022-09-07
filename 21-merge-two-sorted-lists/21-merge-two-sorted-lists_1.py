@@ -10,6 +10,7 @@ class Solution(object):
         :type list2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
+        # Iterative
         dummy = cur = ListNode(0)
         while list1 and list2:
             next1, next2 = list1.next, list2.next
