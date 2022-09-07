@@ -10,6 +10,7 @@ class Solution(object):
         :type list2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
+        # Recursion
         if not list1:
             return list2
         if not list2:
