@@ -1,3 +1,4 @@
+# DP with Trie
 class TrieNode(object):
     def __init__(self):
         self.children = dict()
@@ -28,6 +29,8 @@ class Solution(object):
         l = len(s)
         dp = [False]*(l + 1)
         dp[-1] = True
+        
+        # Bottom up, so that each i will be the start of a word, can search in a Trie from root
         for i in range(l-1, -1, -1):
             cur = t.root
             j = i
