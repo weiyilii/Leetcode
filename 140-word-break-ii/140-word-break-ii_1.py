@@ -5,6 +5,7 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: List[str]
         """
+        # Backtracking
         res = []
         l = len(s)
         
