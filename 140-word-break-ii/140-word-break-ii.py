@@ -5,17 +5,19 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: List[str]
         """
-        n = len(s)
-        words = set(wordDict)
-        
-        def dfs(start, path):
-            if start == n:
-                res.append(path[1:])
-            for i in range(start, n):
-                w = s[start:i+1]
-                if w in words:
-                    dfs(i+1, path + " " + w)
-        
         res = []
-        dfs(0, "")
+        l = len(s)
+        
+        def dfs(i, path):
+            if i == l:
+                res.append(" ".join(path))
+                return
+            if i > l:
+                return
+            for word in wordDict:
+                wlen = len(word)
+                if i + wlen <= l and s[i:i + wlen] == word:
+                    dfs(i + wlen, path + [word])
+        
+        dfs(0, [])
         return res
