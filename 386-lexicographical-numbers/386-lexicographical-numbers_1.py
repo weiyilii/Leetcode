@@ -1,3 +1,4 @@
+# Trie, DFS
 class TrieNode(object):
     def __init__(self):
         self.children = dict()
