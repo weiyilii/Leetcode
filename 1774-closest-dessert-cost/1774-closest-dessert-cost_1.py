@@ -1,5 +1,6 @@
 class Solution:
     def closestCost(self, baseCosts: List[int], toppingCosts: List[int], target: int) -> int:
+        # Brute Force
         res = []
         for base in baseCosts:
             res.append(base)
