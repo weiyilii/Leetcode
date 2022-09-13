@@ -1,14 +1,18 @@
 class Solution:
     def closestCost(self, baseCosts: List[int], toppingCosts: List[int], target: int) -> int:
-        res = []
-        for base in baseCosts:
-            res.append(base)
-        for topping in toppingCosts:
-            l = len(res)
-            for i in range(l):
-                for j in [1, 2]:
-                    res.append(res[i] + j*topping)
-                    
-        res.sort(key = lambda x: (abs(x - target), x))
-        return res[0]
+        self.res = float('inf')
         
+        def dfs(cur, i):
+            if abs(cur - target) < abs(self.res - target) or (abs(cur - target) == abs(self.res - target) and cur < self.res):
+                self.res = cur
+            if i >= len(toppingCosts):
+                return
+            
+            dfs(cur, i+1)
+            dfs(cur + toppingCosts[i], i+1)
+            dfs(cur + 2*toppingCosts[i], i+1)
+        
+        for base in baseCosts:
+            dfs(base, 0)
+        
+        return self.res
