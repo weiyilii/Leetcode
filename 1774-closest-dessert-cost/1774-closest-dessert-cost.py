@@ -5,7 +5,7 @@ class Solution:
         def dfs(cur, i):
             if abs(cur - target) < abs(self.res - target) or (abs(cur - target) == abs(self.res - target) and cur < self.res):
                 self.res = cur
-            if i >= len(toppingCosts):
+            if i >= len(toppingCosts) or cur >= target:
                 return
             
             dfs(cur, i+1)
