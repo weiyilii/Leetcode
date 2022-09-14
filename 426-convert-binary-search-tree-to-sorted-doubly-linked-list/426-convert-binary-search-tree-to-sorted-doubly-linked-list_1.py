@@ -6,7 +6,7 @@ class Node:
         self.left = left
         self.right = right
 """
-
+# DFS
 class Solution:
     def treeToDoublyList(self, root: 'Optional[Node]') -> 'Optional[Node]':
         self.first, self.last = None, None
