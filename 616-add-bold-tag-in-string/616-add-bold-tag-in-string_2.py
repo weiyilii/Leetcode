@@ -1,5 +1,6 @@
 class Solution:
     def addBoldTag(self, s: str, words: List[str]) -> str:
+        # Use an array to determine whether in bold
         op = [False]*len(s)
         for word in words:
             wl = len(word)
