@@ -1,11 +1,13 @@
 class Solution:
     def addBoldTag(self, s: str, words: List[str]) -> str:
+        # Merge Intervals
         intervals = []
         for word in words:
             wl = len(word)
             index = s.find(word)
             while index != -1:
                 intervals.append([index, index + wl])
+                # Update index by 1 and find next word: s = "zzz", word = "zz"
                 index += 1
                 index = s.find(word, index)
         if len(intervals) == 0:
