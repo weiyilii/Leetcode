@@ -15,4 +15,6 @@ class Solution:
             for j in range(i, len(s)):
                 if s[j] == s2[i] and s[j] != s2[j]:
                     news = s[:i] + s[j] + s[i+1:j] + s[i] + s[j+1:]
-                    q.append((news, d+1))
+                    if news not in visited:
+                        q.append((news, d+1))
+                        visited.add(news)
