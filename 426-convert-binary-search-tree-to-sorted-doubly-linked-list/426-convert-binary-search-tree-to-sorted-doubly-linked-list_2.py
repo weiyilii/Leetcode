@@ -6,7 +6,7 @@ class Node:
         self.left = left
         self.right = right
 """
-
+# Iterative Stack
 class Solution:
     def treeToDoublyList(self, root: 'Optional[Node]') -> 'Optional[Node]':
         if not root:
