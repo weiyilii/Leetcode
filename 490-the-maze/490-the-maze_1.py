@@ -1,5 +1,6 @@
 class Solution:
     def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
+        # DFS
         m, n = len(maze), len(maze[0])
         visited = [[False]*n for _ in range(m)]
         
