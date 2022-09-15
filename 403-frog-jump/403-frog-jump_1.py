@@ -1,5 +1,6 @@
 class Solution:
     def canCross(self, stones: List[int]) -> bool:
+        # DFS with memoization
         target = stones[-1]
         stones = set(stones)
         seen = set()
