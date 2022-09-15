@@ -14,7 +14,6 @@ class Solution:
                 stack.append(int(stack.pop()/num))
         
         for c in s:
-            #print(stack, op, num)
             if c.isdigit():
                 num = num*10 + int(c)
             if c in ("+", "-", "*", "/"):
