@@ -16,6 +16,6 @@ class Solution:
                     if dfs(cur+new, new):
                         return True
                     seen.add((cur+new, new))
-            seen.add((cur, step))
+            #seen.add((cur, step))
         
         return dfs(1, 1)
