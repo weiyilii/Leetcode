@@ -1,27 +1,18 @@
-class Solution(object):
-    def evalRPN(self, tokens):
-        """
-        :type tokens: List[str]
-        :rtype: int
-        """
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
         stack = []
-        ops = {"+", "-", "*", "/"}
-        
-        for i in tokens:
-            if i not in ops:
-                stack.append(int(i))
+        for op in tokens:
+            if op not in ("+", "-", "*", "/"):
+                stack.append(int(op))
             else:
-                num2 = stack.pop()
-                num1 = stack.pop()
-                if i == "+":
-                    num = num1 + num2
-                elif i == "-":
-                    num = num1 - num2
-                elif i == "*":
-                    num = num1 * num2
-                else:
-                    num = int(float(num1) / num2)
-                stack.append(num)
-        
+                n1 = stack.pop()
+                n2 = stack.pop()
+                if op == "+":
+                    stack.append(n1 + n2)
+                if op == "-":
+                    stack.append(n2 - n1)
+                if op == "*":
+                    stack.append(n1*n2)
+                if op == "/":
+                    stack.append(int(n2/n1))
         return stack[0]
-            
