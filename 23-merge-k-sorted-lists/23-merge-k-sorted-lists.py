@@ -16,15 +16,13 @@ class Solution:
         return self.mergeTwo(lefthalf, righthalf)
     
     def mergeTwo(self, l1, l2):
-        dummy = cur = ListNode(0)
-        while l1 and l2:
-            x, y = l1.val, l2.val
-            if x <= y:
-                cur.next = l1
-                l1 = l1.next
-            else:
-                cur.next = l2
-                l2 = l2.next
-            cur = cur.next
-        cur.next = l1 if l1 else l2
-        return dummy.next
+        if not l1:
+            return l2
+        if not l2:
+            return l1
+        if l1.val <= l2.val:
+            l1.next = self.mergeTwo(l1.next, l2)
+            return l1
+        else:
+            l2.next = self.mergeTwo(l1, l2.next)
+            return l2
