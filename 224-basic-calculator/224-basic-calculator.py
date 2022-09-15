@@ -2,8 +2,7 @@ class Solution:
     def calculate(self, s: str) -> int:
         res, number, sign = 0, 0, 1
         stack = []
-        for i in range(len(s)):
-            c = s[i]
+        for c in s:
             if c.isdigit():
                 number = number*10 + int(c)
             if c == "+":
@@ -15,11 +14,10 @@ class Solution:
             if c == "(":
                 stack.append(res)
                 stack.append(sign)
-                res = 0
-                sign = 1
+                res, sign = 0, 1
             if c == ")":
                 res += number*sign
                 res = res*stack.pop() + stack.pop()
-                number = 0
+                number, sign = 0, 1
         res += number*sign
         return res
