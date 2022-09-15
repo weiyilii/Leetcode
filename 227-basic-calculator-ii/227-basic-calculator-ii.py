@@ -2,8 +2,7 @@ class Solution:
     def calculate(self, s: str) -> int:
         number, op = 0, "+"
         stack = []
-        for i in range(len(s)):
-            c = s[i]
+        for c in s:
             if c.isdigit():
                 number = number*10 + int(c)
             if c in ("+", "-", "*", "/"):
@@ -28,6 +27,5 @@ class Solution:
             stack.append(n*number)
         if op == "/":
             n = stack.pop()
-            stack.append(int(n/number)) 
-        
+            stack.append(int(n/number))
         return sum(stack)
