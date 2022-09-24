@@ -3,6 +3,7 @@ class Solution:
         """
         Do not return anything, modify board in-place instead.
         """
+        # DFS
         m, n = len(board), len(board[0])
         
         def dfs(i, j):
