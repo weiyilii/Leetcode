@@ -1,5 +1,6 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        # BFS
         from collections import deque
         
         graph = collections.defaultdict(set)
