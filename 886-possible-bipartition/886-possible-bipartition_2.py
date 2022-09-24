@@ -1,5 +1,6 @@
 class Solution:
     def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
+        # BFS
         from collections import deque
         
         graph = collections.defaultdict(set)
