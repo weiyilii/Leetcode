@@ -1,26 +1,25 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        from collections import deque
+        
         graph = collections.defaultdict(set)
-        for edge in prerequisites:
-            src, dst = edge
+        indegree = [0]*numCourses
+        for [dst, src] in prerequisites:
             graph[src].add(dst)
-            
-        visited = [False]*numCourses
-        onPath = [False]*numCourses
-        self.hasCycle = False
+            indegree[dst] += 1
         
-        def dfs(i):
-            if onPath[i]:
-                self.hasCycle = True
-            if visited[i] or onPath[i]:
-                return
-            onPath[i] = True
-            visited[i] = True
-            for j in graph[i]:
-                dfs(j)
-            onPath[i] = False
+        q = deque()
+        for node, degree in enumerate(indegree):
+            if degree == 0:
+                q.append(node)
+                
+        count = 0
+        while q:
+            node = q.popleft()
+            count += 1
+            for to in graph[node]:
+                indegree[to] -= 1
+                if indegree[to] == 0:
+                    q.append(to)
         
-        for i in range(numCourses):
-            dfs(i)
-        
-        return False if self.hasCycle else True
+        return count == numCourses
