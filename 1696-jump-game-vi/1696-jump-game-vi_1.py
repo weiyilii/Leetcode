@@ -1,5 +1,7 @@
 class Solution:
     def maxResult(self, nums: List[int], k: int) -> int:
+        # DP, Heap
+        # Scan from right to left
         from heapq import heappop, heappush
         n = len(nums)
         dp = [0]*n
