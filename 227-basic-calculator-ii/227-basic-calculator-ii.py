@@ -1,31 +1,35 @@
 class Solution:
     def calculate(self, s: str) -> int:
-        number, op = 0, "+"
-        stack = []
+        stack = [0]
+        num, op = 0, "+"
         for c in s:
             if c.isdigit():
-                number = number*10 + int(c)
-            if c in ("+", "-", "*", "/"):
-                if op == "+":
-                    stack.append(number)
-                if op == "-":
-                    stack.append(-number)
+                num = num*10 + int(c)
+            elif c in ("+", "-", "*", "/"):
                 if op == "*":
-                    n = stack.pop()
-                    stack.append(n*number)
-                if op == "/":
-                    n = stack.pop()
-                    stack.append(int(n/number))
-                number = 0
-                op = c
-        if op == "+":
-            stack.append(number)
-        if op == "-":
-            stack.append(-number)
+                    prev = stack.pop()
+                    new = prev*num
+                    stack.append(new)
+                elif op == "/":
+                    prev = stack.pop()
+                    new = int(prev/num)
+                    stack.append(new)
+                elif op == "+":
+                    stack.append(num)
+                elif op == "-":
+                    stack.append(-num)
+                num, op = 0, c
+                
         if op == "*":
-            n = stack.pop()
-            stack.append(n*number)
-        if op == "/":
-            n = stack.pop()
-            stack.append(int(n/number))
+            prev = stack.pop()
+            new = prev*num
+            stack.append(new)
+        elif op == "/":
+            prev = stack.pop()
+            new = int(prev/num)
+            stack.append(new)
+        elif op == "+":
+            stack.append(num)
+        elif op == "-":
+            stack.append(-num)
         return sum(stack)
