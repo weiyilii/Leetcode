@@ -1,4 +1,4 @@
 # Write your MySQL query statement below
-SELECT score, 
-DENSE_RANK() OVER (ORDER BY score DESC) 'rank'
-FROM Scores
+SELECT SCORE, DENSE_RANK() OVER (ORDER BY SCORE DESC) 'RANK'
+FROM SCORES
+ORDER BY SCORE DESC
