@@ -1,34 +1,41 @@
-class Solution:    
+class Solution:
     def calculate(self, s: str) -> int:
         stack = []
         num, op = 0, "+"
         
-        def update(op, num):
+        def compute(num, op):
             if op == "+":
                 stack.append(num)
-            if op == "-":
+            elif op == "-":
                 stack.append(-num)
-            if op == "*":
-                stack.append(stack.pop()*num)
-            if op == "/":
-                stack.append(int(stack.pop()/num))
+            elif op == "*":
+                prev = stack.pop()
+                stack.append(prev*num)
+            elif op == "/":
+                prev = stack.pop()
+                stack.append(int(float(prev)/num))
         
-        for c in s:
+        for i in range(len(s)):
+            print(stack)
+            c = s[i]
             if c.isdigit():
                 num = num*10 + int(c)
             if c in ("+", "-", "*", "/"):
-                update(op, num)
-                op, num = c, 0
+                compute(num, op)
+                num, op = 0, c
             if c == "(":
+                #stack.append(num)
                 stack.append(op)
-                op = "+"
+                num, op = 0, "+"
             if c == ")":
-                update(op, num)
-                print(stack)
+                compute(num, op)
                 num = 0
-                while stack[-1] not in ("+", "-", "*", "/"):
+                while stack and stack[-1] not in ("+", "-", "*", "/"):
                     num += stack.pop()
-                update(stack.pop(), num)
-                op, num = c, 0
-        update(op, num)
+                if stack:
+                    op = stack.pop()
+                    compute(num, op)
+                    num, op = 0, c
+        compute(num, op)
         return sum(stack)
+                
