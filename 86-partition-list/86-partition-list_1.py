@@ -16,6 +16,8 @@ class Solution:
             else:
                 cur2.next = cur
                 cur2 = cur2.next
+                
+            # For each cur node in the original list, after appending it to new sub list, dont forget to set its next to None, break original link
             temp = cur.next
             cur.next = None
             cur = temp
