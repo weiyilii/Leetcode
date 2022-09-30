@@ -1,20 +1,19 @@
 # Definition for singly-linked list.
-# class ListNode(object):
+# class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-class Solution(object):
-    def deleteDuplicates(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
-        dummy = prev = ListNode(-101, head)
-        cur = head
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(-200, head)
+        prev, cur = dummy, head
         while cur:
             if cur.val == prev.val:
-                prev.next = cur.next
+                temp = cur.next
+                prev.next = temp
+                cur.next = None
+                cur = temp
             else:
-                prev = cur
-            cur = cur.next
+                cur = cur.next
+                prev = prev.next
         return dummy.next
