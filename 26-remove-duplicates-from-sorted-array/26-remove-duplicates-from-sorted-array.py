@@ -7,7 +7,6 @@ class Solution:
                 nums[left] = nums[right]
                 prev = nums[right]
                 left += 1
-                right += 1
-            else:
-                right += 1
+            right += 1
+            
         return left
