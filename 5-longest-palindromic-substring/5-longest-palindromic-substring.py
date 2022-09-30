@@ -1,23 +1,21 @@
-class Solution(object):
-    def longestPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
-        maxl = 1
-        start, end = 0, 0
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        left, right = 0, 0
+        
+        def expand(i, j):
+            while i >= 0 and j < len(s) and s[i] == s[j]:
+                i -= 1
+                j += 1
+            return (i+1, j-1)
+        
         for i in range(len(s)):
-            len1 = self.expand(s, i, i)
-            len2 = self.expand(s, i, i+1)
-            l = max(len1, len2)
-            if l > maxl:
-                maxl = l
-                start = i - (l-1)//2
-                end = i + l//2
-        return s[start:end+1]
-    
-    def expand(self, s, i, j):
-        while i >= 0 and j < len(s) and s[i] == s[j]:
-            i -= 1
-            j += 1
-        return j - i - 1
+            res = expand(i, i)
+            if res[1] - res[0] > right - left:
+                left, right = res[0], res[1]
+        
+        for i in range(len(s)-1):
+            res = expand(i, i+1)
+            if res[1] - res[0] > right - left:
+                left, right = res[0], res[1]
+        
+        return s[left:right+1]
